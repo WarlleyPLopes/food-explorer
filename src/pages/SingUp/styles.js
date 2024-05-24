@@ -10,18 +10,18 @@ export const Container = styled.div`
     text-align: center;
 
     font-family: "Poppins", sans-serif;
-    font-size: 0.875rem;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 1.5rem;
-    margin-top: 2rem;
-}
+    line-height: 24px;
+    margin-top: 32px;
+  }
 `
 
 export const Form = styled.form`
   padding: 0 47px 0 65px;
 
   > label {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 400;
     color: ${({ theme }) => theme.colors.light_400};
   }
@@ -30,7 +30,7 @@ export const Form = styled.form`
 export const Logo = styled.div`
   display: flex;
   gap: 10px;
-  margin: 9.875rem 0 4.5625rem;
+  margin: 158px 0 73px;
 
   > img {
     width: 2.6875rem;

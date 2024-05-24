@@ -5,7 +5,7 @@ export const Container = styled.button`
   background-color: ${({ theme }) => theme.colors.tomato_100};
   color: ${({ theme }) => theme.colors.light_100};
 
-  padding: 0.75rem 1.5rem;
+  padding: 12px 24px;
   margin-top: 1rem;
 
   border: none;

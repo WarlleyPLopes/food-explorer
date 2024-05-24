@@ -4,7 +4,6 @@ export const Container = styled.footer`
   background-color: ${({ theme }) => theme.colors.dark_700};
   width: 100%;
 
-
   .margin {
     display: flex;
     align-items: center;
@@ -25,7 +24,7 @@ export const Logo = styled.div`
   > span {
     color: ${({ theme }) => theme.colors.light_700};
     font-family: "Roboto", sans-serif;
-    font-size: 0.9539rem;
+    font-size: 15.2624px;
     font-weight: 700;
   }
 
