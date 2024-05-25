@@ -1,13 +1,19 @@
-import { Header } from "../../components/Header";
-import { Footer } from "../../components/Footer";
-import { Container } from "./styles";
+import { Header } from "../../components/Header"
+import { Footer } from "../../components/Footer"
+import { Container } from "./styles"
+import { ViewDish } from "../../components/ViewDish"
+import { GoChevronLeft } from "react-icons/go"
 
 export function Dish() {
   return (
     <Container>
-      <Header/>
-      <h1>Dish</h1>
-      <Footer/>
+      <Header />
+      <button>
+        <GoChevronLeft size={30} />
+        Voltar
+      </button>
+      <ViewDish />
+      <Footer />
     </Container>
   )
 }

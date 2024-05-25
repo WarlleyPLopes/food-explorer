@@ -1,6 +1,6 @@
 import { Container } from "./styles"
-import close from "../../assets/icons/close.svg"
-import plus from "../../assets/icons/plus.svg"
+import { GoPlus } from "react-icons/go";
+import { IoCloseOutline } from "react-icons/io5";
 
 export function SetIngredient({ isNew, value, onClick, ...rest }) {
   return (
@@ -12,7 +12,7 @@ export function SetIngredient({ isNew, value, onClick, ...rest }) {
         onClick={onClick}
         className={isNew ? "button-add" : "button-delete"}
       >
-        {isNew ? { close } : { plus }}
+        {isNew ? <GoPlus/> : <IoCloseOutline/>}
       </button>
     </Container>
   )

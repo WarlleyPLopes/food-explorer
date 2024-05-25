@@ -1,25 +1,18 @@
-import { Button } from "../../components/Button"
 import { Footer } from "../../components/Footer"
 import { Header } from "../../components/Header"
-import { Container } from "./styles"
+import { Hero } from "../../components/Hero"
+import { Container, Section } from "./styles"
 
 export function Home() {
   return (
     <Container>
       <Header />
+      <Hero />
 
-      <Button title="meu botão" loading />
-      <Button title="meu botão" />
-      <Button title="meu botão" />
-      <Button title="meu botão" />
-      <Button title="meu botão" />
-      <Button title="meu botão" />
-      <Button title="meu botão" />
-      <Button title="meu botão" />
-      <Button title="meu botão" />
-      <Button title="meu botão" />
-      <Button title="meu botão" />
-      
+      <Section>Refeição</Section>
+      <Section>Bebidas</Section>
+      <Section>Sobremesas</Section>
+
       <Footer />
     </Container>
   )
