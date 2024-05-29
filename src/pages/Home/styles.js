@@ -5,10 +5,6 @@ export const Container = styled.div`
 
   height: 100vh;
 
-  > footer {
-    position: fixed;
-    bottom: 0;
-  }
 `
 
 export const Section = styled.div``

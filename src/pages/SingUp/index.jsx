@@ -2,6 +2,7 @@ import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
 import { Container, Logo, Form } from "./styles"
 import polygon from "../../assets/icons/polygon.svg"
+import { Link } from "react-router-dom"
 
 export function SingUp() {
   return (
@@ -32,7 +33,7 @@ export function SingUp() {
         <Button title="Criar conta" />
 
       </Form>
-        <a href="#">Já tenho uma conta</a>
+        <Link to="/">Já tenho uma conta</Link>
     </Container>
   )
 }

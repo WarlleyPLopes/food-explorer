@@ -1,7 +1,12 @@
 import styled from "styled-components"
+import { DEVICE_BREAKPOINT } from "../../styles/devicebreakpoint"
 
-export const Container = styled.div`
+export const Container = styled.aside`
   font-family: "Roboto", sans-serif;
+  display: none;
+  width: 100%;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.colors.dark_400};
 
   > a {
     margin: 0 28px;
@@ -20,29 +25,39 @@ export const Container = styled.div`
     position: fixed;
     bottom: 0;
   }
+
+  @media (max-width: ${DEVICE_BREAKPOINT.MD}) {
+    display: block;
+    grid-area: none;
+    position: absolute;
+    z-index: 1;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+
+    &[data-menu-is-open="true"] {
+      transform: translateX(0);
+    }
+
+  }
 `
 
 export const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.dark_700};
 
-  > div {
+  button {
+    background: transparent;
+    border: none;
+
     display: flex;
     align-items: center;
 
     margin: 0 28px;
     padding: 54px 0 22px;
-    gap: 1rem;
 
-    button {
-      background: transparent;
-      border: none;
-    }
-
-    h2 {
-      color: ${({ theme }) => theme.colors.light_100};
-      font-size: 21.1632px;
-      font-weight: 400;
-    }
+    color: ${({ theme }) => theme.colors.light_100}; 
+    font-size: 21.163px;
+    font-weight: 400;
   }
 `
 

@@ -2,10 +2,9 @@ import { Container } from "./styles"
 
 import { Ingredient } from "../../components/Ingredient"
 
-import { GoPlus } from "react-icons/go";
 import { PiReceipt } from "react-icons/pi";
-import { HiOutlineMinusSmall } from "react-icons/hi2";
 import dish from "../../assets/images/Mask group.png"
+import { AddQuantity } from "../AddQuantity";
 
 export function ViewDish() {
   return (
@@ -27,15 +26,7 @@ export function ViewDish() {
       </div>
 
       <div className="wrapper">
-        <div className="addDish">
-          <button>
-            <HiOutlineMinusSmall size={30}/>
-          </button>
-          <span>01</span>
-          <button>
-            <GoPlus  size={30}/>
-          </button>
-        </div>
+        <AddQuantity />
         <button>
           <PiReceipt size={30} color="#fff"/>
           pedir<span>R$25,00</span>

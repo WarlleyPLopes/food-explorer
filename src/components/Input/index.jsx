@@ -1,7 +1,9 @@
-import { Container } from "./styles";
+import { Container } from "./styles"
 
-export function Input({...rest}){
-    return <Container >
-        <input {...rest}  />
+export function Input({ ...rest }) {
+  return (
+    <Container>
+      <input type="hidden" {...rest} />
     </Container>
+  )
 }

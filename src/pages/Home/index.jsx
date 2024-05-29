@@ -1,17 +1,26 @@
+import { useState } from "react"
 import { Footer } from "../../components/Footer"
 import { Header } from "../../components/Header"
 import { Hero } from "../../components/Hero"
-import { Container, Section } from "./styles"
+import { Section } from "../../components/Section"
+import { SideMenu } from "../../components/SideMenu"
+import { Container } from "./styles"
 
 export function Home() {
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
   return (
     <Container>
-      <Header />
+      <SideMenu
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+      />
+
+      <Header onOpenMenu={() => setMenuIsOpen(true)}/>
       <Hero />
 
-      <Section>Refeição</Section>
-      <Section>Bebidas</Section>
-      <Section>Sobremesas</Section>
+      <Section title={"Refeição"} />
+      <Section title={"Bebidas"} />
+      <Section title={"Sobremesas"} />
 
       <Footer />
     </Container>

@@ -3,11 +3,11 @@ import { PiReceiptBold } from "react-icons/pi"
 import { IoMdMenu } from "react-icons/io"
 import polygon from "../../assets/icons/polygon.svg"
 
-export function Header() {
+export function Header({onOpenMenu}) {
   return (
     <Container>
       <header>
-        <Menu>
+        <Menu onClick={onOpenMenu}>
           <IoMdMenu size={35} color="#fff" />
         </Menu>
 

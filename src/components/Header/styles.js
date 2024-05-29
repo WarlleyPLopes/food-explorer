@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { DEVICE_BREAKPOINT } from "../../styles/devicebreakpoint"
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.dark_700};
@@ -16,8 +17,13 @@ export const Container = styled.div`
 
 export const Menu = styled.button`
   background: none;
-  display: block;
+  display: none;
   border: none;
+
+
+  @media(max-width: ${DEVICE_BREAKPOINT.MD}) {
+    display: block;
+  }
 `
 
 export const Logo = styled.div`

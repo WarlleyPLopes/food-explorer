@@ -41,7 +41,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 400px) {
+  @media (min-width: 395px) {
     .rectangle .text {
         width: 215px;
         h1 {
