@@ -1,11 +1,21 @@
+import polygon from "../../assets/icons/polygon.svg"
+import { Container, Form, Logo, Wrapper } from "./styles"
+import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
 import { Link } from "react-router-dom"
-import { Container, Form, Logo } from "./styles"
-import polygon from "../../assets/icons/polygon.svg"
-import { Button } from "../../components/Button"
 
+import { useAuth } from "../../hooks/auth"
+import { useState } from "react"
 
 export function SingIn() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const { singIn } = useAuth()
+
+  function handleSingIn() {
+    singIn({ email, password })
+  }
   return (
     <Container>
       <Form>
@@ -14,24 +24,29 @@ export function SingIn() {
           <h1>food explorer</h1>
         </Logo>
 
-        <label htmlFor="email">Email</label>
-        <Input
-          type="text"
-          placeholder="Exemplo: exemplo@exemplo.com.br"
-          name="email"
-        />
+        <Wrapper>
+          <label htmlFor="email">Email</label>
+          <Input
+            type="text"
+            placeholder="Exemplo: exemplo@exemplo.com.br"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Wrapper>
 
-        <label htmlFor="password">Password</label>
-        <Input
-          type="password"
-          placeholder="No mínimo 6 caracteres"
-          name="password"
-        />
+        <Wrapper>
+          <label htmlFor="password">Password</label>
+          <Input
+            type="password"
+            placeholder="No mínimo 6 caracteres"
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Wrapper>
 
-        <Button title="Entrar" />
-
+        <Button title="Entrar" onClick={handleSingIn} />
       </Form>
-        <Link to="/singup">Criar uma conta</Link>
+      <Link to="/singup">Criar uma conta</Link>
     </Container>
   )
 }

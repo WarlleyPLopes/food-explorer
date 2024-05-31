@@ -1,15 +1,27 @@
-import { Container, Header, Search } from "./styles"
+import { Container, Header, Nav, Search } from "./styles"
 import { Footer } from "../Footer"
 import { IoCloseOutline } from "react-icons/io5"
 import search from "../../assets/icons/search.svg"
-import { ButtonText } from "../ButtonText"
-import { Link } from "react-router-dom"
-
+import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from "../../hooks/auth"
 export function SideMenu({ menuIsOpen, onCloseMenu }) {
+  const { singOut } = useAuth()
+  const navigate = useNavigate()
+
+  function handleSingOut(){
+    navigate("/")
+    singOut()
+  }
   return (
     <Container data-menu-is-open={menuIsOpen}>
       <Header>
-        <ButtonText title={"Menu"} icon={IoCloseOutline}  onClick={onCloseMenu}/>
+        <div className="wrapper">
+        <button onClick={onCloseMenu}>
+          <IoCloseOutline/>
+        </button>
+
+        <h1>Menu</h1>
+        </div>
       </Header>
 
       <Search>
@@ -18,13 +30,16 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
         <input type="text" placeholder="Pesquisar pelo título" />
       </Search>
 
-  
-
+      <Nav>
       <Link to="/new">Novo prato</Link>
       <div className="line" />
 
-      <Link to="#">Sair</Link>
+      <button onClick={handleSingOut}>
+        Sair
+      </button>
       <div className="line" />
+
+      </Nav>
 
       <Footer />
     </Container>

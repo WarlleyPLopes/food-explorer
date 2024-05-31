@@ -20,7 +20,7 @@ export const Form = styled.form`
     font-size: 16.546px;
     font-weight: 500;
     line-height: 140%;
-    
+
     color: ${({ theme }) => theme.colors.light_300};
 
     svg {
@@ -75,23 +75,37 @@ export const Wrapper = styled.div`
   }
 `
 
-export const ButtonUpload = styled.button`
+export const ImageFile = styled.div`
   display: flex;
-  padding: 12px 32px;
   align-items: center;
   gap: 8px;
-  align-self: stretch;
+  padding: 12px 32px;
 
-  border: none;
-  border-radius: 8px;
+  > input[type="file"] {
+    display: none;
+  }
 
-  background-color: ${({ theme }) => theme.colors.dark_800};
-  color: ${({ theme }) => theme.colors.light_100};
+  > label {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px; 
+    text-align: center;
 
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 24px;
+    color: ${({ theme }) => theme.colors.light_100};
+
+    cursor: pointer;
+  }
+
+  > input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    color: transparent !important;
+
+    border-radius: 8px;
+  }
 
   svg {
     font-size: 30px;

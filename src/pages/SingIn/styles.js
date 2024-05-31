@@ -14,7 +14,7 @@ export const Container = styled.div`
     font-weight: 500;
     line-height: 24px;
     margin-top: 32px;
-}
+  }
 `
 
 export const Form = styled.form`
@@ -23,7 +23,6 @@ export const Form = styled.form`
   > label {
     font-size: 16px;
     font-weight: 400;
-    color: ${({ theme }) => theme.colors.light_400};
   }
 `
 
@@ -41,5 +40,19 @@ export const Logo = styled.div`
     color: ${({ theme }) => theme.colors.light_100};
     font-size: 2.3125rem;
     font-weight: 700;
+  }
+`
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  > label {
+    color: ${({ theme }) => theme.colors.light_400};
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 100%;
   }
 `

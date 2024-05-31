@@ -16,6 +16,7 @@ export function Home() {
       />
 
       <Header onOpenMenu={() => setMenuIsOpen(true)}/>
+      
       <Hero />
 
       <Section title={"Refeição"} />

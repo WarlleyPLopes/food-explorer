@@ -12,6 +12,11 @@ export const Container = styled.div`
     margin: 0 28px;
     padding: 54px 0 22px;
     gap: 1rem;
+
+    .menu {
+      background-color: transparent;
+      border: none;
+    }
   }
 `
 
@@ -20,8 +25,7 @@ export const Menu = styled.button`
   display: none;
   border: none;
 
-
-  @media(max-width: ${DEVICE_BREAKPOINT.MD}) {
+  @media (max-width: ${DEVICE_BREAKPOINT.MD}) {
     display: block;
   }
 `
@@ -53,7 +57,7 @@ export const Receipt = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     position: relative;
     left: 35px;
     top: -10px;

@@ -13,7 +13,7 @@ export function Card() {
       </div>
 
       <div className="text">
-        <h2>Torradas de Parma ></h2>
+        <h2>Torradas de Parma</h2>
         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
         <span>R$ 25,97</span>
       </div>

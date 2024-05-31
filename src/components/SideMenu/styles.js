@@ -2,24 +2,12 @@ import styled from "styled-components"
 import { DEVICE_BREAKPOINT } from "../../styles/devicebreakpoint"
 
 export const Container = styled.aside`
-  font-family: "Roboto", sans-serif;
-  display: none;
   width: 100%;
   height: 100vh;
+  display: none;
+  font-family: "Roboto", sans-serif;
+
   background-color: ${({ theme }) => theme.colors.dark_400};
-
-  > a {
-    margin: 0 28px;
-    color: ${({ theme }) => theme.colors.light_300};
-    font-family: Poppins;
-    font-size: 24px;
-  }
-
-  > .line {
-    height: 1px;
-    background-color: ${({ theme }) => theme.colors.dark_1000};
-    margin: 0 28px;
-  }
 
   > footer {
     position: fixed;
@@ -38,26 +26,34 @@ export const Container = styled.aside`
     &[data-menu-is-open="true"] {
       transform: translateX(0);
     }
-
   }
 `
 
 export const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.dark_700};
+  padding: 54px 0 22px;
 
-  button {
-    background: transparent;
-    border: none;
-
+  > .wrapper {
     display: flex;
     align-items: center;
-
     margin: 0 28px;
-    padding: 54px 0 22px;
+    gap: 16px;
+    color: ${({ theme }) => theme.colors.light_100};
 
-    color: ${({ theme }) => theme.colors.light_100}; 
-    font-size: 21.163px;
-    font-weight: 400;
+    > button {
+      display: flex;
+      align-items: center;
+      border: none;
+      font-size: 30px;
+
+      background: transparent;
+      color: ${({ theme }) => theme.colors.light_100};
+    }
+
+    h1 {
+      font-size: 21.163px;
+      font-weight: 400;
+    }
   }
 `
 
@@ -89,5 +85,38 @@ export const Search = styled.div`
     width: 24px;
     height: 24px;
     margin-left: 14px;
+  }
+`
+
+export const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 28px;
+
+  > button {
+    display: flex;
+    justify-content: left;
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 140%; /* 33.6px */
+    background: transparent;
+    color: ${({ theme }) => theme.colors.light_300};
+  }
+
+  > a {
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    color: ${({ theme }) => theme.colors.light_300};
+  }
+
+  > .line {
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.dark_1000};
   }
 `

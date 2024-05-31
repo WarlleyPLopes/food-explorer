@@ -1,15 +1,15 @@
-import { Container, Logo, Menu, Receipt } from "./styles"
+import { Container, Logo, Receipt } from "./styles"
 import { PiReceiptBold } from "react-icons/pi"
 import { IoMdMenu } from "react-icons/io"
 import polygon from "../../assets/icons/polygon.svg"
 
-export function Header({onOpenMenu}) {
+export function Header({ onOpenMenu }) {
   return (
     <Container>
       <header>
-        <Menu onClick={onOpenMenu}>
+        <button className="menu" onClick={onOpenMenu}>
           <IoMdMenu size={35} color="#fff" />
-        </Menu>
+        </button>
 
         <Logo>
           <img src={polygon} alt="" />
