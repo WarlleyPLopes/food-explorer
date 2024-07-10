@@ -1,29 +1,31 @@
 import styled from "styled-components"
+import { DEVICE_BREAKPOINT } from "../../styles/devicebreakpoint"
 
 export const Container = styled.div`
   font-family: "Roboto", sans-serif;
-  display: flex;
-  flex-direction: column;
 
-  > a {
-    color: ${({ theme }) => theme.colors.light_100};
-    text-align: center;
-
-    font-family: "Poppins", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 24px;
-    margin-top: 32px;
+  > .container {
+    padding: 0 47px 0 65px;
   }
-`
 
-export const Form = styled.form`
-  padding: 0 47px 0 65px;
+  @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
+    > .container {
+      height: 100vh;
+      display: grid;
+      padding: 0;
+      margin: 0 auto;
 
-  > label {
-    font-size: 16px;
-    font-weight: 400;
-    color: ${({ theme }) => theme.colors.light_400};
+      grid-template-columns: 1fr 1fr;
+      align-content: center;
+
+      .form {
+        display: grid;
+        justify-content: center;
+      }
+    }
+  }
+  @media (min-width: ${DEVICE_BREAKPOINT.LG}) {
+    padding: 0 108px 0 154px;
   }
 `
 
@@ -44,6 +46,52 @@ export const Logo = styled.div`
   }
 `
 
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  > a {
+    color: ${({ theme }) => theme.colors.light_100};
+    text-align: center;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 32px;
+  }
+
+  > h1 {
+    display: none;
+  }
+
+  > label {
+    font-size: 1rem;
+    font-weight: 400;
+    color: ${({ theme }) => theme.colors.light_400};
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
+    width: 476px;
+    padding: 64px;
+
+    border-radius: 16px;
+    background: ${({ theme }) => theme.colors.dark_700};
+
+    > h1 {
+      display: block;
+      margin-bottom: 32px;
+      text-align: center;
+
+      font-family: "Poppins", sans-serif;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 140%;
+      color: ${({ theme }) => theme.colors.light_100};
+    }
+  }
+`
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,8 +99,7 @@ export const Wrapper = styled.div`
 
   > label {
     color: ${({ theme }) => theme.colors.light_400};
-
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 100%;
   }

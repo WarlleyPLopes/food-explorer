@@ -36,45 +36,53 @@ export function SingUp() {
 
   return (
     <Container>
-      <Form>
-        <Logo>
-          <img src={polygon} alt="" />
-          <h1>food explorer</h1>
-        </Logo>
+      <div className="container">
+        <div>
+          <Logo>
+            <img src={polygon} />
+            <h1>food explorer</h1>
+          </Logo>
+        </div>
 
-        <Wrapper>
-          <label htmlFor="name">Name</label>
-          <Input
-            type="text"
-            placeholder="Exemplo: Maria da Silva"
-            name="name"
-            onChange={(event) => setName(event.target.value)}
-          />
-        </Wrapper>
+        <div className="form">
+          <Form>
+            <h1>Crie sua conta</h1>
 
-        <Wrapper>
-          <label htmlFor="email">Email</label>
-          <Input
-            type="text"
-            placeholder="Exemplo: exemplo@exemplo.com.br"
-            name="email"
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </Wrapper>
+            <Wrapper>
+              <label htmlFor="name">Name</label>
+              <Input
+                type="text"
+                placeholder="Exemplo: Maria da Silva"
+                name="name"
+                onChange={(event) => setName(event.target.value)}
+              />
+            </Wrapper>
 
-        <Wrapper>
-          <label htmlFor="password">Password</label>
-          <Input
-            type="password"
-            placeholder="No mínimo 6 caracteres"
-            name="password"
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </Wrapper>
+            <Wrapper>
+              <label htmlFor="email">Email</label>
+              <Input
+                type="text"
+                placeholder="Exemplo: exemplo@exemplo.com.br"
+                name="email"
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </Wrapper>
 
-        <Button title="Criar conta" onClick={handleSingUp} />
-      </Form>
-      <Link to="/">Já tenho uma conta</Link>
+            <Wrapper>
+              <label htmlFor="password">Password</label>
+              <Input
+                type="password"
+                placeholder="No mínimo 6 caracteres"
+                name="password"
+                onChange={(event) => setPassword(event.target.value)}
+              />
+            </Wrapper>
+
+            <Button title="Criar conta" onClick={handleSingUp} />
+            <Link to="/">Já tenho uma conta</Link>
+          </Form>
+        </div>
+      </div>
     </Container>
   )
 }

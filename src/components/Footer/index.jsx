@@ -6,7 +6,7 @@ export function Footer() {
     <Container>
       <div className="margin">
         <Logo>
-          <img src={polygon} alt="" />
+          <img src={polygon} />
           <span>food explorer</span>
         </Logo>
         <p>© 2023 - Todos os direitos reservados.</p>

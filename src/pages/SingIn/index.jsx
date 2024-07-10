@@ -1,4 +1,3 @@
-import polygon from "../../assets/icons/polygon.svg"
 import { Container, Form, Logo, Wrapper } from "./styles"
 import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
@@ -6,6 +5,8 @@ import { Link } from "react-router-dom"
 
 import { useAuth } from "../../hooks/auth"
 import { useState } from "react"
+
+import polygon from "../../assets/icons/polygon.svg"
 
 export function SingIn() {
   const [email, setEmail] = useState("")
@@ -18,35 +19,43 @@ export function SingIn() {
   }
   return (
     <Container>
-      <Form>
+      <div className="container">
+
+        <div>
         <Logo>
-          <img src={polygon} alt="" />
+          <img src={polygon} />
           <h1>food explorer</h1>
         </Logo>
+        </div>
 
-        <Wrapper>
-          <label htmlFor="email">Email</label>
-          <Input
-            type="text"
-            placeholder="Exemplo: exemplo@exemplo.com.br"
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Wrapper>
+        <div className="form">
+        <Form>
+          <h1>Faça login</h1>
+          <Wrapper>
+            <label htmlFor="email">Email</label>
+            <Input
+              type="text"
+              placeholder="Exemplo: exemplo@exemplo.com.br"
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Wrapper>
 
-        <Wrapper>
-          <label htmlFor="password">Password</label>
-          <Input
-            type="password"
-            placeholder="No mínimo 6 caracteres"
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Wrapper>
+          <Wrapper>
+            <label htmlFor="password">Password</label>
+            <Input
+              type="password"
+              placeholder="No mínimo 6 caracteres"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Wrapper>
 
-        <Button title="Entrar" onClick={handleSingIn} />
-      </Form>
-      <Link to="/singup">Criar uma conta</Link>
+          <Button title="Entrar" onClick={handleSingIn} />
+          <Link to="/singup">Criar uma conta</Link>
+        </Form>
+        </div>
+      </div>
     </Container>
   )
 }
