@@ -1,55 +1,118 @@
-import styled from "styled-components";
+import styled from "styled-components"
+import { DEVICE_BREAKPOINT } from "../../styles/devicebreakpoint"
 
 export const Container = styled.div`
-  margin: 44px 16px 62px 36px;
-  border-radius: 2.917px;
   background: ${({ theme }) => theme.colors.gradients_200};
+  margin: 44px 16px 62px 30px;
+  border-radius: 3px;
 
-  .rectangle {
-    width: 100%;
+  .background {
     height: 120px;
-
     display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: end;
+    position: relative;
+    width: 100%;
 
-    > img {
+    align-items: center;
+    justify-content: space-between;
+
+    > .hero {
+      width: 191px;
+      height: 149px;
       flex-shrink: 0;
-      position: absolute;
-      left: 5px;
-      top: 130px;
+
+      position: relative;
+      left: -30px;
+      top: -14px;
     }
 
     > .text {
-      width: 170px;
-
       display: flex;
       flex-direction: column;
-      position: relative;
-      gap: 0.5rem;
-      color: ${({ theme }) => theme.colors.light_300};
+      gap: 3px;
+      margin-right: 21px;
 
       h1 {
-        font-size: 1.125rem;
+        font-size: 18px;
         font-weight: 600;
+        line-height: 140%;
       }
       p {
-        font-size: 0.75rem;
+        font-size: 12px;
         font-weight: 400;
+        line-height: 140%;
       }
     }
   }
 
-  @media (min-width: 395px) {
-    .rectangle .text {
-        width: 215px;
+  @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    margin: 104px 16px 63px 30px;
+    border-radius: 8px;
+
+    .background {
+      > .hero {
+        width: 432px;
+        height: 306px;
+
+        position: relative;
+        left: -38px;
+        top: -43px;
+      }
+
+      > .text {
+        margin-right: 100px;
+        gap: 8px;
+
         h1 {
-            font-size: 18px;
+          font-size: 40px;
+          font-weight: 500;
+          line-height: 140%;
         }
-        p{
-            font-size: 12px;
+        p {
+          font-family: "Roboto", sans-serif;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 100%;
         }
+      }
+    }
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINT.LG}) {
+    height: 260px;
+    display: flex;
+    align-items: center;
+    margin: 164px 16px 63px 30px;
+    border-radius: 8px;
+
+    .background {
+      > .hero { 
+        width: 632px;
+        height: 406px;
+
+        position: relative;
+        left: -55px;
+        top: -73px;
+      }
+
+      > .text {
+        margin-right: 100px;
+        gap: 8px;
+
+        h1 {
+          font-size: 40px;
+          font-weight: 500;
+          line-height: 140%;
+        }
+        p {
+          font-family: "Roboto", sans-serif;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 100%;
+        }
+      }
     }
   }
 `

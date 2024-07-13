@@ -5,11 +5,11 @@ export function AddQuantity() {
   return (
     <Container>
       <button>
-        <HiOutlineMinusSmall size={30} />
+        <HiOutlineMinusSmall size={24} />
       </button>
       <span>01</span>
       <button>
-        <HiOutlinePlus size={30} />
+        <HiOutlinePlus size={24} />
       </button>
     </Container>
   )

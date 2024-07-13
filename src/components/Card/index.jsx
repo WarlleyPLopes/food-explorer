@@ -2,26 +2,28 @@ import { AddQuantity } from "../AddQuantity"
 import Torradas from "../../assets/images/Mask group-1.png"
 import Heart from "../../assets/icons/heart.svg"
 import { Button } from "../Button"
-import { Container } from "./styles"
+import { ButtonWrapper, Container, Favorite, ImgDish, Text } from "./styles"
 
 export function Card() {
   return (
     <Container>
-      <img src={Heart} className="icon" />
-      <div className="image">
+      <Favorite>
+        <img src={Heart} />
+      </Favorite>
+      <ImgDish>
         <img src={Torradas} />
-      </div>
+      </ImgDish>
 
-      <div className="text">
-        <h2>Torradas de Parma</h2>
+      <Text>
+        <h2>Torradas de Parma &#62;</h2>
         <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
         <span>R$ 25,97</span>
-      </div>
+      </Text>
 
-      <div className="buttons">
+      <ButtonWrapper>
         <AddQuantity />
         <Button title={"incluir"} />
-      </div>
+      </ButtonWrapper>
     </Container>
   )
 }
