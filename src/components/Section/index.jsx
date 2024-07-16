@@ -6,10 +6,10 @@ export function Section({ title }) {
     <Container>
       <h1>{title}</h1>
       <div className="dishes">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </div>
     </Container>
   )

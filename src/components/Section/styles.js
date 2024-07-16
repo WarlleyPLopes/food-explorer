@@ -1,8 +1,10 @@
 import styled from "styled-components"
+import { DEVICE_BREAKPOINT } from "../../styles/devicebreakpoint"
 
 export const Container = styled.div`
-  font-family: Poppins;
+  font-family: "Poppins", sans-serif;
   margin: 24px;
+  gap: 47px;
 
   > h1 {
     color: ${({ theme }) => theme.colors.light_300};
@@ -17,8 +19,13 @@ export const Container = styled.div`
     display: flex;
     flex-wrap: nowrap;
     gap: 24px;
-    margin-bottom: 24px;
     overflow-x: scroll;
-    padding-right: 24px;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
+    > h1 {
+      font-size: 32px;
+      line-height: 140%;
+    }
   }
 `

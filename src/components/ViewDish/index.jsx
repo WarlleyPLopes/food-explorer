@@ -1,37 +1,34 @@
-import { Container } from "./styles"
+import { Ingredient } from "../Ingredient"
+import { PiReceipt } from "react-icons/pi"
+import { AddQuantity } from "../AddQuantity"
+import { Container, Ingredients, Text } from "./styles"
 
-import { Ingredient } from "../../components/Ingredient"
-
-import { PiReceipt } from "react-icons/pi";
-import dish from "../../assets/images/Mask group.png"
-import { AddQuantity } from "../AddQuantity";
-
-export function ViewDish() {
+export function ViewDish({ data, ...rest }) {
   return (
-    <Container>
-      <img src={dish} alt="" />
+    <Container {...rest}>
+      <img src={data.image} />
 
-      <h1>Salada Ravanello</h1>
+      <Text>
+        <h1>{data.title}</h1>
 
-      <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
+        <p>{data.description}</p>
 
-      <div className="ingredients">
-        <Ingredient title={"alface"} />
-        <Ingredient title={"cebola"} />
-        <Ingredient title={"pão naan"} />
+        {data.ingredients && (
+          <Ingredients>
+            {data.ingredients.map((ingredient) => (
+              <Ingredient key={ingredient.id} title={ingredient.title} />
+            ))}
+          </Ingredients>
+        )}
 
-        <Ingredient title={"pepino"} />
-        <Ingredient title={"rabanete"} />
-        <Ingredient title={"tomate"} />
-      </div>
-
-      <div className="wrapper">
-        <AddQuantity />
-        <button>
-          <PiReceipt size={30} color="#fff"/>
-          pedir<span>R$25,00</span>
-        </button>
-      </div>
+        <div className="wrapper">
+          <AddQuantity />
+          <button>
+            <PiReceipt size={30} color="#fff" />
+            pedir<span>R$25,00</span>
+          </button>
+        </div>
+      </Text>
     </Container>
   )
 }

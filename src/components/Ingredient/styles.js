@@ -11,7 +11,7 @@ export const Container = styled.span`
 
   font-size: 14px;
   font-weight: 500;
-  line-height: 24px; 
+  line-height: 24px;
   text-align: center;
 
   background-color: ${({ theme }) => theme.colors.dark_1000};

@@ -15,14 +15,15 @@ export function Home() {
         onCloseMenu={() => setMenuIsOpen(false)}
       />
 
-      <Header onOpenMenu={() => setMenuIsOpen(true)}/>
-      
-      <Hero />
+      <Header onOpenMenu={() => setMenuIsOpen(true)} />
 
-      <Section title={"Refeição"} />
-      <Section title={"Bebidas"} />
-      <Section title={"Sobremesas"} />
+      <div className="margin">
+        <Hero />
 
+        <Section title={"Refeições"} />
+        <Section title={"Sobremesas"} />
+        <Section title={"Bebidas"} />
+      </div>
       <Footer />
     </Container>
   )

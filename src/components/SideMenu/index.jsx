@@ -8,7 +8,7 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
   const { singOut } = useAuth()
   const navigate = useNavigate()
 
-  function handleSingOut(){
+  function handleSingOut() {
     navigate("/")
     singOut()
   }
@@ -16,11 +16,11 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
     <Container data-menu-is-open={menuIsOpen}>
       <Header>
         <div className="wrapper">
-        <button onClick={onCloseMenu}>
-          <IoCloseOutline/>
-        </button>
+          <button onClick={onCloseMenu}>
+            <IoCloseOutline />
+          </button>
 
-        <h1>Menu</h1>
+          <h1>Menu</h1>
         </div>
       </Header>
 
@@ -31,14 +31,11 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
       </Search>
 
       <Nav>
-      <Link to="/new">Novo prato</Link>
-      <div className="line" />
+        <Link to="/new">Novo prato</Link>
+        <div className="line" />
 
-      <button onClick={handleSingOut}>
-        Sair
-      </button>
-      <div className="line" />
-
+        <button onClick={handleSingOut}>Sair</button>
+        <div className="line" />
       </Nav>
 
       <Footer />

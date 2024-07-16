@@ -8,15 +8,6 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 
-    :root {
-    font-size: 16px;
-
-    @media (max-width: ${DEVICE_BREAKPOINT.MD}) {
-      font-size: 12px;
-    }
-  }
-
-
     body {
         background-color: ${({ theme }) => theme.colors.dark_400} ;
         color: ${({ theme }) => theme.colors.light_300} ;

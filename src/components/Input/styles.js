@@ -10,6 +10,15 @@ export const Container = styled.div`
   margin-bottom: 32px;
   border-radius: 8px;
 
+  > svg {
+    margin-right: 16px;
+    color: ${({ theme }) => theme.colors.light_100};
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+  }
+
   > input {
     width: 100%;
     height: 56px;
