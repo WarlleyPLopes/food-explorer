@@ -1,15 +1,38 @@
-import { Header } from "../../components/Header"
-import { Footer } from "../../components/Footer"
+import { useNavigate, useParams } from "react-router-dom"
+import { RiArrowLeftSLine } from "react-icons/ri"
+import { useEffect, useState } from "react"
+
+import { api } from "../../services/api"
+
+import { Container, Content } from "./styles"
 import { ButtonText } from "../../components/ButtonText"
 import { SideMenu } from "../../components/SideMenu"
-import { Container, Content } from "./styles"
 import { ViewDish } from "../../components/ViewDish"
-import { RiArrowLeftSLine } from "react-icons/ri"
-import { useState } from "react"
-import image from '../../assets/images/Mask group-10.png'
+import { Header } from "../../components/Header"
+import { Footer } from "../../components/Footer"
 
 export function Dish() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [data, setData] = useState(null)
+
+  const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`
+
+  const params = useParams()
+
+  const navigate = useNavigate()
+
+  function handleBack() {
+    navigate(-1)
+  }
+
+  useEffect(() => {
+    async function fetchDish() {
+      const response = await api.get(`/dishes/${params.id}`)
+      setData(response.data)
+    }
+    fetchDish()
+  }, [])
+
   return (
     <Container>
       <SideMenu
@@ -17,22 +40,15 @@ export function Dish() {
         onCloseMenu={() => setMenuIsOpen(false)}
       />
 
-      <Header onOpenMenu={() => setMenuIsOpen(true)}/>
+      <Header onOpenMenu={() => setMenuIsOpen(true)} />
       <Content>
-      <ButtonText title={"Voltar"} icon={RiArrowLeftSLine} />
-      <ViewDish data={{
-        id: '1',
-        image: `${image}`,
-        title: 'Salada Ravanello',
-        description: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.',
-        ingredients: [
-          {id: '1', title: 'alface'},
-          {id: '2',title : 'cebola'},
-          {id: '3',title : 'tomate'},
-          {id: '4',title : 'azeitona'},
-          {id: '5',title : 'cenoura'},
-        ]
-      }}/>
+        <ButtonText
+          title={"Voltar"}
+          icon={RiArrowLeftSLine}
+          onClick={handleBack}
+        />
+
+        {data && <ViewDish data={data} img={imageURL} />}
       </Content>
       <Footer />
     </Container>

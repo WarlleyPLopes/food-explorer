@@ -3,13 +3,14 @@ import { DEVICE_BREAKPOINT } from "../../styles/devicebreakpoint"
 
 export const Container = styled.div`
   font-family: "Poppins", sans-serif;
-
-  /* width: 210px;
-  height: 292px; */
+> .content {
+  width: 210px;
+  height: 292px;
 
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 24px;
 
@@ -22,10 +23,13 @@ export const Container = styled.div`
   > .buttons {
     margin-top: 12px;
   }
+}
 
   @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
+   .content {
     width: 304px;
-    gap: 15px;
+    height: 462px;
+   }
   }
 `
 

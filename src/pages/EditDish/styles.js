@@ -1,6 +1,94 @@
 import styled from "styled-components"
+import { DEVICE_BREAKPOINT } from "../../styles/devicebreakpoint"
 
-export const Container = styled.div``
+export const Container = styled.div`
+  font-family: "Poppins", sans-serif;
+
+  > .content {
+    display: flex;
+    flex-direction: column;
+    margin: 11px 32px 53px;
+    gap: 24px;
+    max-width: ${DEVICE_BREAKPOINT.XL};
+
+    > a {
+      display: flex;
+      align-items: center;
+
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 140%;
+      color: ${({ theme }) => theme.colors.light_300};
+
+      svg {
+        font-size: 22px;
+      }
+    }
+
+    > h1 {
+      font-family: "Poppins", sans-serif;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 140%;
+
+      color: ${({ theme }) => theme.colors.light_300};
+    }
+
+    > .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+
+      button {
+        display: flex;
+        padding: 12px 24px;
+        text-align: center;
+        border: none;
+
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        border-radius: 5px;
+
+        background: ${({ theme }) => theme.colors.tomato_100};
+        color: ${({ theme }) => theme.colors.light_100};
+      }
+      button:first-child {
+        background: ${({ theme }) => theme.colors.dark_800};
+      }
+    }
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
+    > .content {
+      .buttons {
+        justify-content: flex-end;
+      }
+    }
+  }
+  @media (min-width: ${DEVICE_BREAKPOINT.XL}) {
+    .content {
+      margin: 40px auto 116px;
+
+      > a {
+        display: flex;
+        align-items: center;
+
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 140%;
+        line-height: 140%;
+        color: ${({ theme }) => theme.colors.light_300};
+
+        color: var(--Light-Light-300, #e1e1e6);
+
+        svg {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+`
 
 export const Form = styled.form`
   font-family: "Roboto", sans-serif;
@@ -9,8 +97,6 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: start;
   gap: 24px;
-
-  margin: 11px 32px;
 
   > a {
     display: flex;
@@ -27,13 +113,18 @@ export const Form = styled.form`
       font-size: 30px;
     }
   }
-  > h1 {
-    font-family: "Poppins", sans-serif;
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 140%;
 
-    color: ${({ theme }) => theme.colors.light_300};
+  > .ingredient {
+    grid-column: 1/3;
+  }
+
+  > .description {
+    grid-column: 1/4;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINT.LG}) {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1.5fr;
   }
 `
 
@@ -89,7 +180,7 @@ export const ImageFile = styled.div`
     font-family: Poppins;
     font-size: 14px;
     font-weight: 500;
-    line-height: 24px; 
+    line-height: 24px;
     text-align: center;
 
     color: ${({ theme }) => theme.colors.light_100};

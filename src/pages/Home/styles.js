@@ -13,3 +13,47 @@ export const Container = styled.div`
     }
   }
 `
+
+export const Section = styled.section`
+  font-family: "Poppins", sans-serif;
+  margin: 24px;
+  gap: 47px;
+  
+
+  > h1 {
+    color: ${({ theme }) => theme.colors.light_300};
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    margin-bottom: 24px;
+    margin-top: 24px;
+  }
+
+  > .dishes {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 24px;
+    overflow-x: hidden;
+  }
+
+  >.swiper-slide {
+    margin-right: 24px;
+    margin-left: 24px;
+    flex-basis: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    max-width: 250px;
+    margin-bottom: 47px;
+    margin-top: 47px;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
+    > h1 {
+      font-size: 32px;
+      line-height: 140%;
+      margin-bottom: 47px;
+      margin-top: 47px;
+    }
+  }
+`

@@ -5,13 +5,16 @@ import search from "../../assets/icons/search.svg"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/auth"
 export function SideMenu({ menuIsOpen, onCloseMenu }) {
-  const { singOut } = useAuth()
+  const { singOut, user } = useAuth()
+
   const navigate = useNavigate()
+  const admin = user.isAdmin
 
   function handleSingOut() {
     navigate("/")
     singOut()
   }
+
   return (
     <Container data-menu-is-open={menuIsOpen}>
       <Header>
@@ -30,13 +33,23 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
         <input type="text" placeholder="Pesquisar pelo título" />
       </Search>
 
-      <Nav>
-        <Link to="/new">Novo prato</Link>
-        <div className="line" />
+      {admin ? (
+        <Nav>
+          <Link to="/new">Novo prato</Link>
+          <div className="line" />
 
-        <button onClick={handleSingOut}>Sair</button>
-        <div className="line" />
-      </Nav>
+          <button onClick={handleSingOut}>Sair</button>
+          <div className="line" />
+        </Nav>
+      ) : (
+        <Nav>
+          <Link to="/favorites">Meus Favoritos</Link>
+          <div className="line" />
+
+          <button onClick={handleSingOut}>Sair</button>
+          <div className="line" />
+        </Nav>
+      )}
 
       <Footer />
     </Container>

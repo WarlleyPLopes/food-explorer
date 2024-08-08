@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components"
-import { DEVICE_BREAKPOINT } from "./devicebreakpoint"
 
 export default createGlobalStyle`
     * {

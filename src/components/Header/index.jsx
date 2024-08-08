@@ -1,16 +1,19 @@
-import { Container, Menu, Receipt, Input, Logo, ReceiptDesktop } from "./styles"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/auth"
+import { Container, Menu, Input, Logo, Bag } from "./styles"
 
 import { PiReceiptBold } from "react-icons/pi"
 import { IoMdMenu } from "react-icons/io"
 import { FiSearch } from "react-icons/fi"
 import { FiLogOut } from "react-icons/fi"
+
 import polygon from "../../assets/icons/polygon.svg"
 
-export function Header({ onOpenMenu }) {
-  const { singOut } = useAuth()
+export function Header({ onOpenMenu, search}) {
+  const { singOut, user } = useAuth()
+
   const navigate = useNavigate()
+  const admin = user.isAdmin
 
   function handleSingOut() {
     navigate("/")
@@ -24,25 +27,52 @@ export function Header({ onOpenMenu }) {
           <IoMdMenu size={35} color="#fff" />
         </Menu>
 
-        <Logo>
-          <img src={polygon} />
-          <h1>food explorer</h1>
-        </Logo>
+        {admin ? (
+          <Logo>
+            <img src={polygon} />
+            <div className="textAdmin">
+              <h1>food explorer</h1>
+              <span>admin</span>
+            </div>
+          </Logo>
+        ) : (
+          <Logo>
+            <img src={polygon} />
+            <h1>food explorer</h1>
+          </Logo>
+        )}
 
         <Input>
           <FiSearch />
-          <input type="text" placeholder="Busque por pratos ou ingredientes" />
+          <input
+            type="text"
+            placeholder="Busque por pratos ou ingredientes"
+            onChange={e => {search(e.target.value)}}
+          />
         </Input>
 
-        <Receipt>
-          <span>0</span>
-          <PiReceiptBold size={30} color="#fff" />
-        </Receipt>
+        {admin ? (
+          <Bag>
+            <button className="bagDesktop" onClick={() => navigate("/new")}>
+              <span style={{ width: "max-content" }}>Novo prato</span>
+            </button>
+          </Bag>
+        ) : (
+          <Bag>
+            <button className="bag">
+              <span>0</span>
+              <PiReceiptBold size={30} color="#fff" />
+            </button>
 
-        <ReceiptDesktop>
-          <PiReceiptBold size={30} color="#fff" />
-          Pedido <span>(0)</span>
-        </ReceiptDesktop>
+            <button
+              className="bagDesktop"
+              onClick={() => alert("direcionar para pagina de pedidos")}
+            >
+              <PiReceiptBold size={30} color="#fff" />
+              Pedido <span>(0)</span>
+            </button>
+          </Bag>
+        )}
 
         <button className="singout" onClick={handleSingOut}>
           <FiLogOut size={30} color="#fff" />

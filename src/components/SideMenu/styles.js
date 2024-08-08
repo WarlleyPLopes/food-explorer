@@ -18,7 +18,7 @@ export const Container = styled.aside`
     display: block;
     grid-area: none;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
 
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
@@ -72,7 +72,7 @@ export const Search = styled.div`
     width: 100%;
     padding: 12px 14px;
 
-    color: red;
+    color: ${({ theme }) => theme.colors.light_100};
     background: transparent;
     border: 0;
 

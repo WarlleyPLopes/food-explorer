@@ -1,16 +1,18 @@
+import { Container, Ingredients, Text } from "./styles"
+import { AddQuantity } from "../AddQuantity"
 import { Ingredient } from "../Ingredient"
 import { PiReceipt } from "react-icons/pi"
-import { AddQuantity } from "../AddQuantity"
-import { Container, Ingredients, Text } from "./styles"
+import { useAuth } from "../../hooks/auth"
 
-export function ViewDish({ data, ...rest }) {
+export function ViewDish({ data, img, ...rest }) {
+  const { user } = useAuth()
+  const admin = user.isAdmin
   return (
     <Container {...rest}>
-      <img src={data.image} />
+      <img src={img} />
 
       <Text>
         <h1>{data.title}</h1>
-
         <p>{data.description}</p>
 
         {data.ingredients && (
@@ -21,13 +23,19 @@ export function ViewDish({ data, ...rest }) {
           </Ingredients>
         )}
 
-        <div className="wrapper">
-          <AddQuantity />
-          <button>
-            <PiReceipt size={30} color="#fff" />
-            pedir<span>R$25,00</span>
-          </button>
-        </div>
+        {admin ? (
+          <div className="wrapper">
+            <button>Editar prato</button>
+          </div>
+        ) : (
+          <div className="wrapper">
+            <AddQuantity />
+            <button>
+              <PiReceipt size={30} color="#fff" />
+              pedir<span>R${data.price}</span>
+            </button>
+          </div>
+        )}
       </Text>
     </Container>
   )

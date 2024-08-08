@@ -65,6 +65,30 @@ export const Logo = styled.div`
     font-weight: 700;
     color: ${({ theme }) => theme.colors.light_100};
   }
+
+  > .textAdmin {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    > h1 {
+      width: max-content;
+      font-family: "Roboto", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: ${({ theme }) => theme.colors.light_100};
+    }
+    > span {
+      position: absolute;
+      bottom: -15px;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 160%;
+
+      color: ${({ theme }) => theme.colors.cake_200};
+    }
+  }
 `
 
 export const Input = styled.div`
@@ -109,50 +133,57 @@ export const Input = styled.div`
   }
 `
 
-export const Receipt = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: none;
-  border: none;
-
-  > span {
-    width: 20px;
-    height: 20px;
+export const Bag = styled.div`
+  > .bag {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    position: relative;
-    left: 35px;
-    top: -10px;
+    background: none;
+    border: none;
 
-    border-radius: 50%;
+    > span {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-    background-color: ${({ theme }) => theme.colors.tomato_200};
+      position: relative;
+      left: 35px;
+      top: -10px;
+
+      border-radius: 50%;
+
+      background-color: ${({ theme }) => theme.colors.tomato_200};
+      color: ${({ theme }) => theme.colors.light_100};
+    }
+  }
+
+  > .bagDesktop {
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px;
+    gap: 8px;
+
+    border: none;
+    border-radius: 5px;
+
     color: ${({ theme }) => theme.colors.light_100};
+    background-color: ${({ theme }) => theme.colors.tomato_100};
   }
 
   @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
-    display: none;
+    .bag {
+      display: none;
+    }
   }
-`
-
-export const ReceiptDesktop = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 32px;
-  gap: 8px;
-
-  border: none;
-  border-radius: 5px;
-
-  color: ${({ theme }) => theme.colors.light_100};
-  background-color: ${({ theme }) => theme.colors.tomato_100};
 
   @media (max-width: ${DEVICE_BREAKPOINT.MD}) {
-    display: none;
+    .bagDesktop {
+      display: none;
+    }
   }
 `
