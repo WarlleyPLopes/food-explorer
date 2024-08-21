@@ -35,12 +35,16 @@ export function Card({ data, ...rest }) {
             <p>{data.description}</p>
             <span>R$ {data.price}</span>
           </Text>
-
-          
         </div>
       ) : (
         <div className="content">
-          <Favorite onClick={() => alert("Adicionar prato aos favoritos e mudar background ao alternar")}>
+          <Favorite
+            onClick={() =>
+              alert(
+                "Adicionar prato aos favoritos e mudar background ao alternar"
+              )
+            }
+          >
             <img src={Heart} />
           </Favorite>
           <ImgDish>
@@ -56,7 +60,10 @@ export function Card({ data, ...rest }) {
 
           <ButtonWrapper>
             <AddQuantity />
-            <Button title={"incluir"} onClick={()=> alert("Adicionar prato a sacola")}/>
+            <Button
+              title={"incluir"}
+              onClick={() => alert("Adicionar prato a sacola")}
+            />
           </ButtonWrapper>
         </div>
       )}

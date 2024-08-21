@@ -3,10 +3,13 @@ import { AddQuantity } from "../AddQuantity"
 import { Ingredient } from "../Ingredient"
 import { PiReceipt } from "react-icons/pi"
 import { useAuth } from "../../hooks/auth"
+import { useNavigate } from "react-router-dom"
 
 export function ViewDish({ data, img, ...rest }) {
   const { user } = useAuth()
   const admin = user.isAdmin
+  const navigate = useNavigate()
+
   return (
     <Container {...rest}>
       <img src={img} />
@@ -25,7 +28,9 @@ export function ViewDish({ data, img, ...rest }) {
 
         {admin ? (
           <div className="wrapper">
-            <button>Editar prato</button>
+            <button onClick={() => navigate(`/edit/${data.id}`)}>
+              Editar prato
+            </button>
           </div>
         ) : (
           <div className="wrapper">

@@ -1,12 +1,14 @@
+import { FiUpload } from "react-icons/fi"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
+
 import { IngredientItem } from "../../components/IngredientItem"
-import { RiArrowLeftSLine } from "react-icons/ri"
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
 import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
-import { FiUpload } from "react-icons/fi"
-import { Link } from "react-router-dom"
-import { useState } from "react"
+import { RiArrowLeftSLine } from "react-icons/ri"
+
 import {
   Container,
   Form,
@@ -25,15 +27,17 @@ export function NewDish() {
   const [description, setDescription] = useState("")
   const [category, setCategory] = useState("")
   const [price, setPrice] = useState("")
-  const [imageFile, setImageFile] = useState(null)
+  const [image, setImage] = useState(null)
 
   const [ingredients, setIngredients] = useState([])
   const [newIngredient, setNewIngredient] = useState("")
 
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const navigate = useNavigate()
 
   function handleAddIngredient() {
     setIngredients((prevState) => [...prevState, newIngredient])
+    setNewIngredient("")
   }
 
   function handleRemoveIngredient(deleted) {
@@ -43,28 +47,48 @@ export function NewDish() {
   }
 
   async function handleNewDish() {
-    if (!title || !description || !category || !price || !imageFile) {
-      return alert("Preencha todos os campos")
+    if (!image) {
+      return alert("Erro: Você não inseriu uma imagem para o prato!")
     }
-
+    if (!title) {
+      return alert("Erro: Você não informou o nome do prato!")
+    }
+    if (ingredients.length < 1) {
+      return alert("Erro: Adicione pelo menos um ingrediente!")
+    }
     if (newIngredient) {
-      return alert("Você não adicionou o ingrediente")
+      return alert(
+        "Erro: Você deixou um ingrediente no campo para adicionar, mas não clicou em adicionar. Clique no sinal de + para adicionar!"
+      )
+    }
+    if (!category) {
+      return alert("Erro: Você não selecionou a categoria do prato!")
+    }
+    if (!price) {
+      return alert("Erro: Você não informou o preço do prato!")
+    }
+    if (!description) {
+      return alert("Erro: Você não informou uma descrição para o prato!")
     }
 
-    await api.post("/dishes", {
-      title,
-      description,
-      price,
-      ingredients,
-      category,
-      image: imageFile,
-    })
-    alert("Prato cadastrado com sucesso!")
-  }
+    const formData = new FormData()
+    formData.append("image", image)
+    formData.append("title", title)
+    formData.append("description", description)
+    formData.append("category", category)
+    formData.append("price", price)
+    formData.append("ingredients", ingredients)
 
-  function handleChangeImage() {
-    const file = event.target.files[0]
-    setImageFile(file)
+    await api
+      .post("/dishes", formData)
+      .then(alert("Prato adicionado com sucesso!"), navigate("/"))
+      .catch((error) => {
+        if (error.response) {
+          alert(error.response.data.message)
+        } else {
+          alert("Erro ao criar o prato!")
+        }
+      })
   }
 
   return (
@@ -82,19 +106,21 @@ export function NewDish() {
           Voltar
         </Link>
 
-          <h1>Adicionar Prato</h1>
+        <h1>Adicionar Prato</h1>
         <Form>
-
           <Wrapper className="img">
             <label htmlFor="image">Imagem do prato</label>
             <ImageFile>
               <FiUpload />
-              <label htmlFor="image">Selecione uma imagem</label>
+              <label htmlFor="image">
+                {image ? image.name : "Selecione uma imagem"}
+              </label>
               <input
-                placeholder="Selecione uma imagem"
                 type="file"
                 id="image"
-                onChange={handleChangeImage}
+                name="image"
+                accept="image/*"
+                onChange={(e) => setImage(e.target.files[0])}
               />
             </ImageFile>
           </Wrapper>
