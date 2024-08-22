@@ -24,28 +24,20 @@ import {
 
 export function EditDish() {
   const [title, setTitle] = useState("")
-  const [price, setPrice] = useState("")
+  const [price, setPrice] = useState(null)
   const [category, setCategory] = useState("")
   const [description, setDescription] = useState("")
 
   const [ingredients, setIngredients] = useState([])
   const [newIngredient, setNewIngredient] = useState("")
 
-  const [image, setImage] = useState()
+  const [image, setImage] = useState("")
   const [imageFile, setImageFile] = useState(null)
 
   const [menuIsOpen, setMenuIsOpen] = useState(false)
 
   const { id } = useParams()
   const navigate = useNavigate()
-
-  function handleChangeImage(event) {
-    const file = event.target.file[0]
-    setImageFile(file)
-
-    const imagePreview = URL.createObjectURL(file)
-    setImage(imagePreview)
-  }
 
   function handleAddIngredient() {
     if (newIngredient.length < 3) {
@@ -65,6 +57,9 @@ export function EditDish() {
   }
 
   async function handleUpdateDish() {
+    if (!image) {
+      return alert("Faça upload da foto do prato")
+    }
     if (!title) {
       return alert("Erro: Você não informou o nome do prato!")
     }
@@ -88,7 +83,6 @@ export function EditDish() {
 
     try {
       await api.put(`/dishes/${id}`, {
-        image,
         title,
         description,
         category,
@@ -103,7 +97,6 @@ export function EditDish() {
 
         await api.patch(`/dishes/image/${id}`, fileUploadForm)
       }
-
       alert("Prato atualizado com sucesso!")
     } catch (err) {
       if (err.response) {
@@ -135,14 +128,13 @@ export function EditDish() {
       const { title, description, category, price, ingredients, image } =
         response.data
 
-      setImage(image)
       setTitle(title)
       setDescription(description)
       setCategory(category)
       setPrice(price)
       setIngredients(ingredients.map((ingredient) => ingredient.title))
+      setImage(image)
     }
-
     fetchDish()
   }, [id])
 
@@ -172,11 +164,11 @@ export function EditDish() {
                 {imageFile ? imageFile.name : image}
               </label>
               <input
-                id="image"
                 type="file"
+                id="image"
                 name="image"
-                accept="image/*"
-                onChange={handleChangeImage}
+                onChange={(e) => setImageFile(e.target.files[0])}
+                required
               />
             </ImageFile>
           </Wrapper>
