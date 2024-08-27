@@ -11,7 +11,7 @@ export const Container = styled.div`
   border-radius: 8px;
 
   > svg {
-    margin-right: 16px;
+    margin-left: 16px;
     color: ${({ theme }) => theme.colors.light_100};
     font-size: 24px;
     font-weight: 500;
@@ -23,7 +23,6 @@ export const Container = styled.div`
     width: 100%;
     height: 56px;
     padding: 12px;
-
     font-size: 16px;
 
     color: ${({ theme }) => theme.colors.light_100};

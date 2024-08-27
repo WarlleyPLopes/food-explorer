@@ -1,34 +1,113 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../hooks/auth"
-import { Container, Menu, Input, Logo, Bag } from "./styles"
-
+import { Container, Logo, Bag, Hamburger, InputDesktop } from "./styles"
+import { Input } from "../Input"
 import { PiReceiptBold } from "react-icons/pi"
-import { IoMdMenu } from "react-icons/io"
-import { FiSearch } from "react-icons/fi"
+import { FiMenu, FiX } from "react-icons/fi"
 import { FiLogOut } from "react-icons/fi"
 
 import polygon from "../../assets/icons/polygon.svg"
+import { GoSearch } from "react-icons/go"
+import { useState } from "react"
 
-export function Header({ onOpenMenu, search}) {
+export function Header({ search }) {
   const { singOut, user } = useAuth()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigate = useNavigate()
   const admin = user.isAdmin
 
-  function handleSingOut() {
+  function handleModal() {
+    document.getElementById("nav-mobile").classList.toggle("active")
+    handleToggleMenu()
+  }
+
+  function handleToggleMenu() {
+    setIsMenuOpen(!isMenuOpen)
+    document.body.classList.toggle("no-scroll", !isMenuOpen)
+  }
+
+  function handleSignOut() {
     navigate("/")
     singOut()
   }
 
   return (
     <Container>
-      <header>
-        <Menu onClick={onOpenMenu}>
-          <IoMdMenu size={35} color="#fff" />
-        </Menu>
+      <div className="content">
+        <div id="nav-mobile">
+          <header>
+            <FiX
+              size={26}
+              onClick={() => {
+                handleModal()
+              }}
+            />
+            Menu
+          </header>
+
+          <nav>
+            <Input
+              icon={GoSearch}
+              type="text"
+              placeholder="Busque por pratos ou ingredientes"
+              onChange={(e) => {
+                search(e.target.value)
+              }}
+            />
+
+            {admin ? (
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/new">Novo Prato</Link>
+                </li>
+                <li>
+                  <Link to="/order-history">Pedidos</Link>
+                </li>
+                <li>
+                  <Link to="/" onClick={handleSignOut}>
+                    Sair
+                  </Link>
+                </li>
+              </ul>
+            ) : (
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/profile">Meu perfil</Link>
+                </li>
+                <li>
+                  <Link to="/favorites">Meus favoritos</Link>
+                </li>
+                <li>
+                  <Link to="/order-history">Historico de Pedidos</Link>
+                </li>
+                <li>
+                  <Link to="/" onClick={handleSignOut}>
+                    Sair
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </nav>
+        </div>
+
+        <Hamburger
+          id="hamburguer"
+          onClick={() => {
+            handleModal()
+          }}
+        >
+          <FiMenu size={26} />
+        </Hamburger>
 
         {admin ? (
-          <Logo>
+          <Logo to="/">
             <img src={polygon} />
             <div className="textAdmin">
               <h1>food explorer</h1>
@@ -36,20 +115,22 @@ export function Header({ onOpenMenu, search}) {
             </div>
           </Logo>
         ) : (
-          <Logo>
+          <Logo to="/">
             <img src={polygon} />
             <h1>food explorer</h1>
           </Logo>
         )}
 
-        <Input>
-          <FiSearch />
+        <InputDesktop className="inputDesktop">
+          <GoSearch size={30} />
           <input
             type="text"
             placeholder="Busque por pratos ou ingredientes"
-            onChange={e => {search(e.target.value)}}
+            onChange={(e) => {
+              search(e.target.value)
+            }}
           />
-        </Input>
+        </InputDesktop>
 
         {admin ? (
           <Bag>
@@ -74,10 +155,10 @@ export function Header({ onOpenMenu, search}) {
           </Bag>
         )}
 
-        <button className="singout" onClick={handleSingOut}>
+        <button className="singOut" onClick={handleSignOut}>
           <FiLogOut size={30} color="#fff" />
         </button>
-      </header>
+      </div>
     </Container>
   )
 }

@@ -1,16 +1,13 @@
-import { api } from "../../services/api"
-import { SideMenu } from "../../components/SideMenu"
-import { useAuth } from "../../hooks/auth"
-
-import { FiUpload } from "react-icons/fi"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { api } from "../../services/api"
 
 import { IngredientItem } from "../../components/IngredientItem"
+import { RiArrowLeftSLine } from "react-icons/ri"
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
 import { Input } from "../../components/Input"
-import { RiArrowLeftSLine } from "react-icons/ri"
+import { FiUpload } from "react-icons/fi"
 
 import {
   Container,
@@ -34,13 +31,11 @@ export function EditDish() {
   const [image, setImage] = useState("")
   const [imageFile, setImageFile] = useState(null)
 
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
-
   const { id } = useParams()
   const navigate = useNavigate()
 
   function handleAddIngredient() {
-    if (newIngredient.length < 3) {
+    if (newIngredient.length <= 2) {
       return alert(
         "Erro: Você está tentando inserir um nome de ingrediente inválido!"
       )
@@ -140,13 +135,7 @@ export function EditDish() {
 
   return (
     <Container>
-      <SideMenu
-        menuIsOpen={menuIsOpen}
-        onCloseMenu={() => setMenuIsOpen(false)}
-      />
-
-      <Header onOpenMenu={() => setMenuIsOpen(true)} />
-
+      <Header />
       <div className="content">
         <Link to="/">
           <RiArrowLeftSLine />

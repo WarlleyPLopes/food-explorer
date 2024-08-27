@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
-
 import { api } from "../../services/api"
 
 import { Container, Section } from "./styles"
-import { SideMenu } from "../../components/SideMenu"
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
 import { Hero } from "../../components/Hero"
@@ -18,8 +16,6 @@ import "swiper/css/pagination"
 import "swiper/css/scrollbar"
 
 export function Home() {
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
-
   const [dishes, setDishes] = useState([])
   const [search, setSearch] = useState("")
 
@@ -30,19 +26,13 @@ export function Home() {
     }
     fetchDishes()
   }, [search])
-
+ 
   return (
     <Container>
-      <SideMenu
-        menuIsOpen={menuIsOpen}
-        onCloseMenu={() => setMenuIsOpen(false)}
-      />
-
-      <Header search={setSearch} onOpenMenu={() => setMenuIsOpen(true)} />
+      <Header search={setSearch} />
 
       <div className="margin">
         <Hero />
-
         <Section>
           <h1>Refeições</h1>
           {dishes.filter((dish) => dish.category === "meals").length > 0 && (

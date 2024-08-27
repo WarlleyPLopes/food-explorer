@@ -1,24 +1,94 @@
 import styled from "styled-components"
 import { DEVICE_BREAKPOINT } from "../../styles/devicebreakpoint"
+import { Link } from "react-router-dom"
 
-export const Container = styled.div`
+export const Container = styled.header`
   background-color: ${({ theme }) => theme.colors.dark_700};
 
-  > header {
+  > .content {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    gap: 32px;
+    flex-shrink: 0;
 
-    padding: 54px 0 22px;
-    margin: 0 28px;
-    gap: 2rem;
+    #nav-mobile {
+      width: 100%;
+      height: 100%;
 
-    .menu {
-      border: none;
-      background-color: transparent;
+      display: grid;
+      grid-template-rows: 114px auto;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+
+      > header {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        padding: 2.8rem 2.8rem 0;
+
+        background-color: ${({ theme }) => theme.colors.dark_700};
+        color: ${({ theme }) => theme.colors.light_100};
+
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 25px;
+
+        > svg {
+          cursor: pointer;
+        }
+      }
+
+      > nav {
+        padding: 2.8rem;
+        background-color: ${({ theme }) => theme.colors.dark_400};
+
+        > div {
+          margin-bottom: 3.6rem;
+        }
+
+        > ul {
+          list-style: none;
+
+          li {
+            padding: 1rem;
+            border-bottom: solid 1px ${({ theme }) => theme.colors.dark_1000};
+
+            > a {
+              display: block;
+              font-weight: 300;
+              font-size: 24px;
+              line-height: 140%;
+
+              color: ${({ theme }) => theme.colors.light_300};
+              text-decoration: none;
+              cursor: pointer;
+
+              transition: color 0.3s ease;
+
+              &:hover {
+                color: ${({ theme }) => theme.colors.cake_200};
+              }
+            }
+          }
+        }
+      }
+
+      @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
+        display: none;
+      }
     }
 
-    .singout {
+    #nav-mobile.active {
+      transform: translateX(0);
+    }
+
+    .singOut {
       display: none;
       border: none;
       background-color: transparent;
@@ -27,27 +97,37 @@ export const Container = styled.div`
 
     @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
       max-width: ${DEVICE_BREAKPOINT.XL};
+      height: 96px;
       padding: 24px 22px;
       margin: 0 auto;
 
-      .singout {
+      .singOut {
         display: block;
       }
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINT.MD}) {
+      padding: 64px 28px 32px;
+      justify-content: space-between;
     }
   }
 `
 
-export const Menu = styled.button`
-  display: none;
-  border: none;
+export const Hamburger = styled.button`
+  display: flex;
+  align-items: center;
+  
   background: none;
+  border: none;
+  color: ${({ theme }) => theme.colors.light_100};
+  cursor: pointer;
 
-  @media (max-width: ${DEVICE_BREAKPOINT.MD}) {
-    display: block;
+  @media (min-width: ${DEVICE_BREAKPOINT.MD}) {
+    display: none;
   }
 `
 
-export const Logo = styled.div`
+export const Logo = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +171,7 @@ export const Logo = styled.div`
   }
 `
 
-export const Input = styled.div`
+export const InputDesktop = styled.div`
   width: 100%;
   display: flex;
   align-items: center;

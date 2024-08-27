@@ -6,13 +6,11 @@ import { api } from "../../services/api"
 
 import { Container, Content } from "./styles"
 import { ButtonText } from "../../components/ButtonText"
-import { SideMenu } from "../../components/SideMenu"
 import { ViewDish } from "../../components/ViewDish"
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer"
 
 export function Dish() {
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [data, setData] = useState(null)
 
   const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`
@@ -35,12 +33,8 @@ export function Dish() {
 
   return (
     <Container>
-      <SideMenu
-        menuIsOpen={menuIsOpen}
-        onCloseMenu={() => setMenuIsOpen(false)}
-      />
+      <Header />
 
-      <Header onOpenMenu={() => setMenuIsOpen(true)} />
       <Content>
         <ButtonText
           title={"Voltar"}

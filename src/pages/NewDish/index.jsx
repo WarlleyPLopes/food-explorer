@@ -1,5 +1,5 @@
-import { FiUpload } from "react-icons/fi"
 import { Link, useNavigate } from "react-router-dom"
+import { api } from "../../services/api"
 import { useState } from "react"
 
 import { IngredientItem } from "../../components/IngredientItem"
@@ -8,6 +8,7 @@ import { Footer } from "../../components/Footer"
 import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
 import { RiArrowLeftSLine } from "react-icons/ri"
+import { FiUpload } from "react-icons/fi"
 
 import {
   Container,
@@ -19,9 +20,6 @@ import {
   Wrapper,
 } from "./styles"
 
-import { api } from "../../services/api"
-import { SideMenu } from "../../components/SideMenu"
-
 export function NewDish() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -32,7 +30,6 @@ export function NewDish() {
   const [ingredients, setIngredients] = useState([])
   const [newIngredient, setNewIngredient] = useState("")
 
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
   const navigate = useNavigate()
 
   function handleAddIngredient() {
@@ -93,13 +90,7 @@ export function NewDish() {
 
   return (
     <Container>
-      <SideMenu
-        menuIsOpen={menuIsOpen}
-        onCloseMenu={() => setMenuIsOpen(false)}
-      />
-
-      <Header onOpenMenu={() => setMenuIsOpen(true)} />
-
+      <Header />
       <div className="content">
         <Link to="/">
           <RiArrowLeftSLine />
