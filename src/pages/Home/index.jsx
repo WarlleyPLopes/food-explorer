@@ -62,6 +62,7 @@ export function Home() {
                 navigation
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
+                className="mySwiper"
               >
                 {dishes
                   .filter((dish) => dish.category === "meals")
