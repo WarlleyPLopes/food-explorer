@@ -16,20 +16,20 @@ export function SingUp() {
 
   function handleSingUp() {
     if (!name || !email || !password) {
-      return alert("Fill in all fields")
+      return alert("Preencha todos os campos")
     }
 
     api
       .post("/users", { name, email, password })
       .then(() => {
-        alert("User created with success")
+        alert("Usuário cadastrado com sucesso!")
         navigate("/")
       })
       .catch((error) => {
         if (error.response) {
           alert(error.response.data.message)
         } else {
-          alert("Not possible to create user, try again later")
+          alert("Não foi possível cadastrar")
         }
       })
   }
